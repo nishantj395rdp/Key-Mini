@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "start": "ts-node --esm src/start.ts",
-    "dev": "nodemon --exec ts-node --esm src/start.ts"
+    "start": "node --loader ts-node/esm src/start.ts",
+    "dev": "nodemon --exec node --loader ts-node/esm src/start.ts"
   },
   "dependencies": {
     "@prisma/client": "^5.0.0",
